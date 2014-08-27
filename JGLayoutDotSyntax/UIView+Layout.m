@@ -7,6 +7,7 @@
 
 #import "UIView+Layout.h"
 #import "JGLayoutParameter.h"
+#import "JGLayout.h"
 #import "JGDynamicSizeLabel.h"
 #import "JGDynamicConstraint.h"
 #import <objc/runtime.h>
@@ -19,105 +20,15 @@
 
 @implementation UIView (Layout)
 
-@dynamic left, right, top, bottom, leading, trailing, width, height, centerX, centerY, baseline;
-
-#pragma mark - Getters
-
--(id)left{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeLeft];
-}
-
--(id)right{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeRight];
-}
-
--(id)top{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeTop];
-}
-
--(id)bottom{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeBottom];
-}
-
--(id)leading{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeLeading];
-}
-
--(id)trailing{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeTrailing];
-}
-
--(id)width{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeWidth];
-}
-
--(id)height{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeHeight];
-}
-
--(id)centerX{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeCenterX];
-}
-
--(id)centerY{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeCenterY];
-}
-
--(id)baseline{
-    return [JGLayoutParameter layoutParameterWithObject:self attribute:NSLayoutAttributeBaseline];
-}
-
-#pragma mark - Setters
-
--(void)setLeft:(id)left{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeLeft parameter:left];
-}
-
--(void)setRight:(id)right{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeRight parameter:right];
-}
-
--(void)setTop:(id)top{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeTop parameter:top];
-}
-
--(void)setBottom:(id)bottom{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeBottom parameter:bottom];
-}
-
--(void)setLeading:(id)leading{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeLeading parameter:leading];
-}
-
--(void)setTrailing:(id)trailing{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeTrailing parameter:trailing];
-}
-
--(void)setWidth:(id)width{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeWidth parameter:width];
-}
-
--(void)setHeight:(id)height{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeHeight parameter:height];
-}
-
--(void)setCenterX:(id)centerX{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeCenterX parameter:centerX];
-}
-
--(void)setCenterY:(id)centerY{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeCenterY parameter:centerY];
-}
-
--(void)setBaseline:(id)baseline{
-    [self addLayoutConstraintWithAttribute:NSLayoutAttributeBaseline parameter:baseline];
+- (JGLayout *)layout {
+    return [[JGLayout alloc] initWithObject:self];
 }
 
 #pragma mark - Adding Constraint
 
--(void)removeLayoutConstraintsForAttribute:(NSLayoutAttribute)attribute{
+- (void)removeLayoutConstraintsForAttribute:(NSLayoutAttribute)attribute {
     
-    if([self hasConstraintObserver]) [self.dynamicConstraintObserver stopUpdatingConstraintWithAttribute:attribute];
+    if ([self hasConstraintObserver]) [self.dynamicConstraintObserver stopUpdatingConstraintWithAttribute:attribute];
 
     UIView *view = self;
     
@@ -133,7 +44,7 @@
 }
 
 // parameter argument may be either a JGLayoutParameter or a NSNumber
--(void)addLayoutConstraintWithAttribute:(NSLayoutAttribute)attribute parameter:(id)theParameter{
+- (void)addLayoutConstraintWithAttribute:(NSLayoutAttribute)attribute parameter:(id)theParameter {
     
     //[self removeLayoutConstraintsForAttribute:attribute];
     
@@ -148,11 +59,11 @@
     if ([theParameter isKindOfClass:[JGLayoutParameter class]]) {
         parameter = (JGLayoutParameter*)theParameter;
     }
-    else if([theParameter isKindOfClass:[NSNumber class]]){
+    else if ([theParameter isKindOfClass:[NSNumber class]]) {
         // Creates a JGLayoutParameter out of NSNumber input
-        parameter = [JGLayoutParameter constant:[(NSNumber*)theParameter floatValue]];
+        parameter = [JGLayoutParameter constant:[(NSNumber *)theParameter floatValue]];
     }
-    else{
+    else {
         [NSException raise:@"Bad parameter input" format:@"Parameter input must be either a NSNumber or a JGLayoutParameter or a dynamic constraint."];
     }
     
@@ -181,7 +92,7 @@
 
 }
 
-+(UIView*)nearestCommonView:(NSArray*)views{
++ (UIView *)nearestCommonView:(NSArray *)views {
     int closestView = INT_MAX;
     for (UIView *view in views) {
         closestView = MIN(closestView, [view displacementFromTopOfHeirachy]);
@@ -193,27 +104,27 @@
     }
     
     while (![UIView allObjectsInArrayAreEqual:slice]) {
-        for (int i = 0; i<slice.count; i++) {
+        for (int i = 0; i < slice.count; i++) {
             slice[i] = [slice[i] superview];
         }
     }
     return slice[0]; //all equal or all nil
 }
 
-+(BOOL)allObjectsInArrayAreEqual:(NSArray*)array{
++ (BOOL)allObjectsInArrayAreEqual:(NSArray *)array {
     BOOL returnValue = YES;
     NSObject *firstObject = array[0];
-    for (int i = 1; i<array.count && returnValue; i++) {
-        returnValue = [array[i]isEqual:firstObject];
+    for (int i = 1; i < array.count && returnValue; i++) {
+        returnValue = [array[i] isEqual:firstObject];
     }
     return returnValue;
 }
 
--(UIView*)viewWithDisplacementFromTopOfHeirachy:(int)displacement{
+- (UIView *)viewWithDisplacementFromTopOfHeirachy:(int)displacement {
     return [self superviewOfOrder:[self displacementFromTopOfHeirachy]-displacement];
 }
 
--(UIView*)superviewOfOrder:(int)order{
+- (UIView *)superviewOfOrder:(int)order {
     UIView *view = self;
     for (int i = 0; i < order; i++) {
         view = [view superview];
@@ -221,7 +132,7 @@
     return view;
 }
 
--(int)displacementFromTopOfHeirachy{
+- (int)displacementFromTopOfHeirachy {
     int count = 0;
     for (UIView *i = [self superview]; i; i = [i superview]) {
         count++;
@@ -229,95 +140,7 @@
     return count;
 }
 
--(void)setAlignment:(NSArray *)alignment{
-    if (alignment.count == 4) {
-        for (JGLayoutParameter *parameter in alignment) {
-            switch (parameter.attribute) {
-                case NSLayoutAttributeTop:
-                    self.top = parameter;
-                    break;
-                    
-                case NSLayoutAttributeBottom:
-                    self.bottom = parameter;
-                    break;
-                    
-                case NSLayoutAttributeLeft:
-                    self.left = parameter;
-                    break;
-                    
-                case NSLayoutAttributeRight:
-                    self.right = parameter;
-                    break;
-                    
-                case NSLayoutAttributeLeading:
-                    self.leading = parameter;
-                    break;
-                    
-                case NSLayoutAttributeTrailing:
-                    self.trailing = parameter;
-                    break;
-                    
-                default:
-                    break;
-            }
-        }
-    }
-    else [NSException raise:@"Invalid alignment" format:@"Alignment array does not contain 4 objects"];
-}
-
--(void)setSize:(NSArray *)size{
-    if (size.count == 2) {
-        for (JGLayoutParameter *parameter in size) {
-            switch (parameter.attribute) {
-                case NSLayoutAttributeWidth:
-                    self.width = parameter;
-                    break;
-                    
-                case NSLayoutAttributeHeight:
-                    self.height = parameter;
-                    break;
-                
-                default:
-                    break;
-            }
-        }
-    }
-    else [NSException raise:@"Invalid size" format:@"Size array does not contain 2 objects"];
-}
-
--(void)setPosition:(NSArray *)position{
-    if (position.count == 2) {
-        for (JGLayoutParameter *parameter in position) {
-            switch (parameter.attribute) {
-                case NSLayoutAttributeCenterX:
-                    self.centerX = parameter;
-                    break;
-                    
-                case NSLayoutAttributeCenterY:
-                    self.centerY = parameter;
-                    break;
-                    
-                default:
-                    break;
-            }
-        }
-    }
-    else [NSException raise:@"Invalid alignment" format:@"Center array does not contain 2 objects"];
-}
-
--(NSArray *)alignment{
-    return @[self.top, self.bottom, self.left, self.right];
-}
-
--(NSArray *)size{
-    return @[self.width, self.height];
-}
-
--(NSArray *)position{
-    return @[self.centerX, self.centerY];
-}
-
--(JGDynamicConstraintObserver*)dynamicConstraintObserver{
+- (JGDynamicConstraintObserver *)dynamicConstraintObserver {
     JGDynamicConstraintObserver *observer = objc_getAssociatedObject(self, @selector(dynamicConstraintObserver));
     if (!observer) {
         observer = [[JGDynamicConstraintObserver alloc]init];
@@ -327,15 +150,15 @@
     return observer;
 }
 
--(void)setDynamicConstraintObserver:(JGDynamicConstraintObserver *)dynamicConstraintObserver{
+- (void)setDynamicConstraintObserver:(JGDynamicConstraintObserver *)dynamicConstraintObserver {
     objc_setAssociatedObject(self, @selector(dynamicConstraintObserver), dynamicConstraintObserver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(BOOL)hasConstraintObserver{
-    return objc_getAssociatedObject(self, @selector(dynamicConstraintObserver));
+- (BOOL)hasConstraintObserver {
+    return objc_getAssociatedObject(self, @selector(dynamicConstraintObserver)) != nil;
 }
 
--(void)updatedValue:(NSNumber*)value forConstraint:(NSLayoutConstraint *)constraint forMultiplier:(BOOL)useMultiplier{
+- (void)updatedValue:(NSNumber *)value forConstraint:(NSLayoutConstraint *)constraint forMultiplier:(BOOL)useMultiplier {
     if (useMultiplier){
         
     }

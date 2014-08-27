@@ -5,7 +5,8 @@
 //  Copyright (c) 2013 Jaden Geller. All rights reserved.
 //
 
-#import "UIView+Layout.h"
-#import "NSNumber+LayoutConstruction.h"
 #import "JGLayoutParameter.h"
+#import "UIView+Layout.h"
+#import "JGLayout.h"
+#import "NSNumber+LayoutConstruction.h"
 #import "JGDynamicSizeLabel.h"
