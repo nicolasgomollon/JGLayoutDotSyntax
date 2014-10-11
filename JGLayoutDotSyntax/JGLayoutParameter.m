@@ -13,7 +13,7 @@
 @property (nonatomic) NSLayoutAttribute attribute;
 @property (nonatomic) NSLayoutRelation relation;
 @property (nonatomic) id object;
-@property (nonatomic) NSInteger priority;
+@property (nonatomic) JGLayoutPriority priority;
 @property (nonatomic) id constant;
 @property (nonatomic) id multiplier;
 
@@ -39,7 +39,7 @@
         //Set Defaults (other property defaults are implied)
         _attribute = NSLayoutAttributeNotAnAttribute;
         _relation = NSLayoutRelationEqual;
-        _priority = UILayoutPriorityRequired;
+        _priority = JGLayoutPriorityRequired;
         _multiplier = @(1);
         _constant = @(0);
     }
@@ -48,7 +48,7 @@
 
 // The following functions return self for convenience.
 
-- (id)objectAtIndexedSubscript:(NSUInteger)idx{
+- (id)objectAtIndexedSubscript:(NSUInteger)idx {
     self.priority = idx;
     return self;
 }

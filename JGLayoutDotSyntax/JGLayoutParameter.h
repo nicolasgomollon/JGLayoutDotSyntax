@@ -8,12 +8,18 @@
 #import <Foundation/Foundation.h>
 #import "JGLayoutConstruction.h"
 
+typedef NSUInteger JGLayoutPriority;
+static const JGLayoutPriority JGLayoutPriorityRequired			= 1000;
+static const JGLayoutPriority JGLayoutPriorityDefaultHigh		= 750;
+static const JGLayoutPriority JGLayoutPriorityDefaultLow		= 250;
+static const JGLayoutPriority JGLayoutPriorityFittingSizeLevel	= 50;
+
 @interface JGLayoutParameter : NSObject <JGLayoutConstruction>
 
 @property (nonatomic, readonly) NSLayoutAttribute attribute;
 @property (nonatomic, readonly) NSLayoutRelation relation;
 @property (nonatomic, readonly) id object;
-@property (nonatomic, readonly) NSInteger priority;
+@property (nonatomic, readonly) JGLayoutPriority priority;
 @property (nonatomic, readonly) id constant;
 @property (nonatomic, readonly) id multiplier;
 

@@ -29,6 +29,7 @@
 		D7A3E1FA18BA109C00A92210 /* JGLayoutParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A3E1F518BA109C00A92210 /* JGLayoutParameter.m */; };
 		D7A3E1FB18BA109C00A92210 /* NSNumber+LayoutConstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A3E1F718BA109C00A92210 /* NSNumber+LayoutConstruction.m */; };
 		D7A3E1FC18BA109C00A92210 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A3E1F918BA109C00A92210 /* UIView+Layout.m */; };
+		DAA6F14819E9DD9E00538746 /* JGLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA6F14719E9DD9E00538746 /* JGLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		D7A3E1F718BA109C00A92210 /* NSNumber+LayoutConstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+LayoutConstruction.m"; sourceTree = "<group>"; };
 		D7A3E1F818BA109C00A92210 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		D7A3E1F918BA109C00A92210 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		DAA6F14619E9DD9E00538746 /* JGLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGLayout.h; sourceTree = "<group>"; };
+		DAA6F14719E9DD9E00538746 /* JGLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				D7A3E1F318BA109C00A92210 /* JGLayoutDotSyntax.h */,
+				DAA6F14619E9DD9E00538746 /* JGLayout.h */,
+				DAA6F14719E9DD9E00538746 /* JGLayout.m */,
 				D7A3E1F218BA109C00A92210 /* JGLayoutConstruction.h */,
 				D7A3E1F418BA109C00A92210 /* JGLayoutParameter.h */,
 				D7A3E1F518BA109C00A92210 /* JGLayoutParameter.m */,
@@ -302,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA6F14819E9DD9E00538746 /* JGLayout.m in Sources */,
 				D70B3363184AB62600807CBC /* main.m in Sources */,
 				D740A24F18CE0BAD001D6B15 /* JGDynamicConstraintObserver.m in Sources */,
 				D70B3370184AB62600807CBC /* JGViewController.m in Sources */,
