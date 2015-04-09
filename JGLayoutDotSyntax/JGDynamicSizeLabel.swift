@@ -58,7 +58,7 @@ class JGDynamicSizeLabel: UILabel {
 	}
 	
 	
-	convenience override init() {
+	convenience init() {
 		self.init(frame: CGRectZero)
 	}
 	
