@@ -43,14 +43,14 @@ class JGDynamicSizeLabel: UILabel {
 	var parameter: JGLayoutParameter! {
 	willSet {
 		if let p = parameter {
-			if var view = p.object as? UIView {
+			if let view = p.object as? UIView {
 				view.layer.removeObserver(self, forKeyPath:"bounds")
 			}
 		}
 	}
 	didSet {
 		if let p = parameter {
-			if var view = p.object as? UIView {
+			if let view = p.object as? UIView {
 				view.layer.addObserver(self, forKeyPath: "bounds", options: .New, context: nil)
 			}
 		}
@@ -66,15 +66,15 @@ class JGDynamicSizeLabel: UILabel {
 		super.init(frame: frame)
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
 	
-	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
 		if let p = parameter {
-			var view = p.object as? UIView
-			var viewObject = object as? CALayer
-			if (view != nil) && (viewObject == view!.layer) && (keyPath == "bounds") {
+			let view = p.object as? UIView
+			let viewObject = object as? CALayer
+			if (view != nil) && (viewObject == view!.layer) && (keyPath != nil) && (keyPath! == "bounds") {
 				var size: CGFloat = 0.0
 				switch p.attribute {
 				case .Width:

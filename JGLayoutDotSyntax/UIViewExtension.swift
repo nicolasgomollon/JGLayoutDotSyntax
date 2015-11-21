@@ -19,16 +19,14 @@ extension UIView {
 		var view: UIView? = self
 		
 		// Remove all constraints relating to self and attribute from all superviews of self
-		do {
-			if var view = view {
-				for constraint: AnyObject in view.constraints() {
-					if let constraint = constraint as? NSLayoutConstraint {
-						let firstItem = constraint.firstItem as? UIView
-						let secondItem = constraint.secondItem as? UIView
-						if ((firstItem == self) && (constraint.firstAttribute == attribute)) ||
-							((secondItem == self) && (constraint.secondAttribute == attribute)) {
-								view.removeConstraint(constraint)
-						}
+		repeat {
+			if let view = view {
+				for constraint in view.constraints {
+					let firstItem = constraint.firstItem as? UIView
+					let secondItem = constraint.secondItem as? UIView
+					if ((firstItem == self) && (constraint.firstAttribute == attribute)) ||
+						((secondItem == self) && (constraint.secondAttribute == attribute)) {
+							view.removeConstraint(constraint)
 					}
 				}
 			}

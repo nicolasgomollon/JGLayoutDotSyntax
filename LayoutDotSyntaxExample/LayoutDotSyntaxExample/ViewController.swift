@@ -17,28 +17,28 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 		view.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
 		
-		var blueView = UIView()
+		let blueView = UIView()
 		blueView.backgroundColor = UIColor.blueColor()
-		blueView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		blueView.translatesAutoresizingMaskIntoConstraints = false
 		
-		var greenView = UIView()
+		let greenView = UIView()
 		greenView.backgroundColor = UIColor.greenColor()
-		greenView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		greenView.translatesAutoresizingMaskIntoConstraints = false
 		
-		var yellowView = UIView()
+		let yellowView = UIView()
 		yellowView.backgroundColor = UIColor.yellowColor()
-		yellowView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		yellowView.translatesAutoresizingMaskIntoConstraints = false
 		
-		var redView = UIView()
+		let redView = UIView()
 		redView.backgroundColor = UIColor.redColor()
-		redView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		redView.translatesAutoresizingMaskIntoConstraints = false
 		
-		var purpleView = UIView()
+		let purpleView = UIView()
 		purpleView.backgroundColor = UIColor.purpleColor()
-		purpleView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		purpleView.translatesAutoresizingMaskIntoConstraints = false
 		
-		var label = JGDynamicSizeLabel()
-		label.setTranslatesAutoresizingMaskIntoConstraints(false)
+		let label = JGDynamicSizeLabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
 		label.textAlignment = .Center
 		label.text = "Hello World!"
 		

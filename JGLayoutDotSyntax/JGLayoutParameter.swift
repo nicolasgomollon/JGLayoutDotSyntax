@@ -155,7 +155,7 @@ extension NSNumber {
 
 
 func + (left: JGLayoutParameter, right: Double) -> JGLayoutParameter {
-	var parameter = left.copy() as! JGLayoutParameter
+	let parameter = left.copy() as! JGLayoutParameter
 	parameter.constant += right
 	return parameter
 }
@@ -284,7 +284,7 @@ func -= (left: JGLayoutParameter, right: NSNumber) {
 
 
 func * (left: JGLayoutParameter, right: Double) -> JGLayoutParameter {
-	var parameter = left.copy() as! JGLayoutParameter
+	let parameter = left.copy() as! JGLayoutParameter
 	parameter.multiplier = right
 	return parameter
 }
