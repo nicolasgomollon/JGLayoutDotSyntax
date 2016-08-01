@@ -113,8 +113,10 @@ private extension UIView {
 	
 	var displacementFromTopOfHierarchy: Int {
 		var count = 0
-		for var i = superview; i != nil; i = i?.superview {
-			count++
+		var i = superview
+		while i != nil {
+			count += 1
+			i = i?.superview
 		}
 		return count
 	}
