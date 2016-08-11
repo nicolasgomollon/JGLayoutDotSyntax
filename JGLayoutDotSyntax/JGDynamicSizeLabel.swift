@@ -24,37 +24,37 @@ class JGDynamicSizeLabel: UILabel {
  
 	*/
 	var fontSize: AnyObject! {
-	get {
-		return parameter
-	}
-	set {
-		if newValue == nil {
-			parameter = nil
-		} else if let fontSizeMultiplier = newValue as? JGLayoutParameter {
-			if (fontSizeMultiplier.attribute == NSLayoutAttribute.Width) || (fontSizeMultiplier.attribute == NSLayoutAttribute.Height) {
-				parameter = fontSizeMultiplier
-			}
-		} else if let fontSizeMultiplier = newValue as? Double {
-			font = font.fontWithSize(font.pointSize * CGFloat(fontSizeMultiplier))
+		get {
+			return parameter
 		}
-	}
+		set {
+			if newValue == nil {
+				parameter = nil
+			} else if let fontSizeMultiplier = newValue as? JGLayoutParameter {
+				if (fontSizeMultiplier.attribute == NSLayoutAttribute.Width) || (fontSizeMultiplier.attribute == NSLayoutAttribute.Height) {
+					parameter = fontSizeMultiplier
+				}
+			} else if let fontSizeMultiplier = newValue as? Double {
+				font = font.fontWithSize(font.pointSize * CGFloat(fontSizeMultiplier))
+			}
+		}
 	}
 	
 	var parameter: JGLayoutParameter! {
-	willSet {
-		if let p = parameter {
-			if let view = p.object as? UIView {
-				view.layer.removeObserver(self, forKeyPath:"bounds")
+		willSet {
+			if let p = parameter {
+				if let view = p.object as? UIView {
+					view.layer.removeObserver(self, forKeyPath:"bounds")
+				}
 			}
 		}
-	}
-	didSet {
-		if let p = parameter {
-			if let view = p.object as? UIView {
-				view.layer.addObserver(self, forKeyPath: "bounds", options: .New, context: nil)
+		didSet {
+			if let p = parameter {
+				if let view = p.object as? UIView {
+					view.layer.addObserver(self, forKeyPath: "bounds", options: .New, context: nil)
+				}
 			}
 		}
-	}
 	}
 	
 	

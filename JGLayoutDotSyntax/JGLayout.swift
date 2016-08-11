@@ -43,12 +43,12 @@ class JGLayout: NSObject {
  
 	*/
 	var top: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Top)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Top, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Top)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Top, parameter: newValue)
+		}
 	}
 	
 	/** The bottom of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter. Used as a getter, this returns a JGLayoutParameter representing the bottom of the object.
@@ -64,12 +64,12 @@ class JGLayout: NSObject {
  
 	*/
 	var bottom: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Bottom)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Bottom, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Bottom)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Bottom, parameter: newValue)
+		}
 	}
 	
 	/** The left side of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter. Used as a getter, this returns a JGLayoutParameter representing the left side of the object.
@@ -85,12 +85,12 @@ class JGLayout: NSObject {
 	
 	*/
 	var left: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Left)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Left, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Left)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Left, parameter: newValue)
+		}
 	}
 	
 	/** The right side of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter. Used as a getter, this returns a JGLayoutParameter representing the right side of the object.
@@ -106,12 +106,12 @@ class JGLayout: NSObject {
  
 	*/
 	var right: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Right)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Right, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Right)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Right, parameter: newValue)
+		}
 	}
 	
 	/** The leading edge of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter. Used as a getter, this returns a JGLayoutParameter representing the leading edge of the object.
@@ -127,12 +127,12 @@ class JGLayout: NSObject {
  
 	*/
 	var leading: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Leading)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Leading, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Leading)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Leading, parameter: newValue)
+		}
 	}
 	
 	/** The trailing edge of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter. Used as a getter, this returns a JGLayoutParameter representing the trailing edge of the object.
@@ -148,12 +148,12 @@ class JGLayout: NSObject {
  
 	*/
 	var trailing: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Trailing)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Trailing, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Trailing)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Trailing, parameter: newValue)
+		}
 	}
 	
 	/** The width of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter or constant NSNumber. Used as a getter, this returns a JGLayoutParameter representing the width of the object.
@@ -169,12 +169,12 @@ class JGLayout: NSObject {
  
 	*/
 	var width: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Width)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Width, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Width)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Width, parameter: newValue)
+		}
 	}
 	
 	/** The height of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter or constant NSNumber. Used as a getter, this returns a JGLayoutParameter representing the height of the object.
@@ -190,12 +190,12 @@ class JGLayout: NSObject {
  
 	*/
 	var height: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Height)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Height, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Height)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Height, parameter: newValue)
+		}
 	}
 	
 	/** The center along the x-axis of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter. Used as a getter, this returns a JGLayoutParameter representing the center along the x-axis of the object.
@@ -210,12 +210,12 @@ class JGLayout: NSObject {
  
 	*/
 	var centerX: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .CenterX)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.CenterX, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .CenterX)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.CenterX, parameter: newValue)
+		}
 	}
 	
 	/** The center along the y-axis of the object’s alignment rectangle. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter. Used as a getter, this returns a JGLayoutParameter representing the center along the y-axis of the object.
@@ -230,12 +230,12 @@ class JGLayout: NSObject {
  
 	*/
 	var centerY: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .CenterY)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.CenterY, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .CenterY)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.CenterY, parameter: newValue)
+		}
 	}
 	
 	/** The baseline of the object. Used as a setter, this creates and adds a NSLayoutContraint based upon the specification of the assigned JGLayoutParameter. Used as a getter, this returns a JGLayoutParameter representing the baseline of the object.
@@ -250,12 +250,12 @@ class JGLayout: NSObject {
  
 	*/
 	var baseline: JGLayoutParameter! {
-	get {
-		return JGLayoutParameter(object: object, attribute: .Baseline)
-	}
-	set {
-		view.addLayoutConstraintWithAttribute(.Baseline, parameter: newValue)
-	}
+		get {
+			return JGLayoutParameter(object: object, attribute: .Baseline)
+		}
+		set {
+			view.addLayoutConstraintWithAttribute(.Baseline, parameter: newValue)
+		}
 	}
 	
 	/** Convenience property for setting the top, bottom, left, and right alginment of the reciever to be that of the view argument. As a setter, only another alignment property or a specifically formatted NSArray can be assigned. The NSArray must contain 4 object--a top, bottom, left, and right layout parameter. Note that complex layouts, such as setting the left of a view to the right of another view, cannot be obtained using this convenience property.
@@ -271,30 +271,30 @@ class JGLayout: NSObject {
  
 	*/
 	var alignment: Array<JGLayoutParameter!> {
-	get {
-		return [top, bottom, left, right] as Array<JGLayoutParameter!>
-	}
-	set {
-		assert(newValue.count == 4, "Invalid alignment: Alignment array does not contain 4 objects")
-		for parameter in newValue {
-			switch parameter.attribute {
-			case .Top:
-				top = parameter
-			case .Bottom:
-				bottom = parameter
-			case .Left:
-				left = parameter
-			case .Right:
-				right = parameter
-			case .Leading:
-				leading = parameter
-			case .Trailing:
-				trailing = parameter
-			default:
-				break
+		get {
+			return [top, bottom, left, right] as Array<JGLayoutParameter!>
+		}
+		set {
+			assert(newValue.count == 4, "Invalid alignment: Alignment array does not contain 4 objects")
+			for parameter in newValue {
+				switch parameter.attribute {
+				case .Top:
+					top = parameter
+				case .Bottom:
+					bottom = parameter
+				case .Left:
+					left = parameter
+				case .Right:
+					right = parameter
+				case .Leading:
+					leading = parameter
+				case .Trailing:
+					trailing = parameter
+				default:
+					break
+				}
 			}
 		}
-	}
 	}
 	
 	/** Convenience property for setting the width and height alginment of the reciever to be that of the view argument. As a setter, another size property or an NSArray containing a width and a height layout parameter can be assigned.
@@ -310,22 +310,22 @@ class JGLayout: NSObject {
  
 	*/
 	var size: Array<JGLayoutParameter!> {
-	get {
-		return [width, height] as Array<JGLayoutParameter!>
-	}
-	set {
-		assert(newValue.count == 2, "Invalid size: Size array does not contain 2 objects")
-		for parameter in newValue {
-			switch parameter.attribute {
-			case .Width:
-				width = parameter
-			case .Height:
-				height = parameter
-			default:
-				break
+		get {
+			return [width, height] as Array<JGLayoutParameter!>
+		}
+		set {
+			assert(newValue.count == 2, "Invalid size: Size array does not contain 2 objects")
+			for parameter in newValue {
+				switch parameter.attribute {
+				case .Width:
+					width = parameter
+				case .Height:
+					height = parameter
+				default:
+					break
+				}
 			}
 		}
-	}
 	}
 	
 	/** Convenience property for setting the centerX and centerY of the reciever to be that of the view argument. As a setter, another center property or an NSArray containing a centerX and a centerY layout parameter can be assigned.
@@ -341,22 +341,22 @@ class JGLayout: NSObject {
  
 	*/
 	var center: Array<JGLayoutParameter!> {
-	get {
-		return [centerX, centerY] as Array<JGLayoutParameter!>
-	}
-	set {
-		assert(newValue.count == 2, "Invalid position: Position array does not contain 2 objects")
-		for parameter in newValue {
-			switch parameter.attribute {
-			case .CenterX:
-				centerX = parameter
-			case .CenterY:
-				centerY = parameter
-			default:
-				break
+		get {
+			return [centerX, centerY] as Array<JGLayoutParameter!>
+		}
+		set {
+			assert(newValue.count == 2, "Invalid position: Position array does not contain 2 objects")
+			for parameter in newValue {
+				switch parameter.attribute {
+				case .CenterX:
+					centerX = parameter
+				case .CenterY:
+					centerY = parameter
+				default:
+					break
+				}
 			}
 		}
-	}
 	}
 	
 }
