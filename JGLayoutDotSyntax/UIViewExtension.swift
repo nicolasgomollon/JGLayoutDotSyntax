@@ -15,7 +15,7 @@ extension UIView {
 		return JGLayout(object: self)
 	}
 	
-	func removeLayoutConstraintsForAttribute(attribute: NSLayoutAttribute) {
+	func removeLayoutConstraintsForAttribute(_ attribute: NSLayoutAttribute) {
 		var view: UIView? = self
 		
 		// Remove all constraints relating to self and attribute from all superviews of self
@@ -34,7 +34,7 @@ extension UIView {
 		} while view?.superview != nil
 	}
 	
-	func addLayoutConstraintWithAttribute(attribute: NSLayoutAttribute, parameter: AnyObject?) {
+	func addLayoutConstraintWithAttribute(_ attribute: NSLayoutAttribute, parameter: AnyObject?) {
 		removeLayoutConstraintsForAttribute(attribute)
 		if parameter == nil { return }
 		
@@ -42,7 +42,7 @@ extension UIView {
 		if let layoutParam = parameter as? JGLayoutParameter {
 			layoutParameter = layoutParam
 		} else if let constant = parameter as? Double {
-			layoutParameter = JGLayoutParameter(constant: constant)
+			layoutParameter = JGLayoutParameter(constant)
 		}
 		assert(layoutParameter != nil, "Bad parameter input: Parameter input must be either a JGLayoutParameter, NSNumber, Double, Float, or Int.")
 		
@@ -56,7 +56,7 @@ extension UIView {
 		} else {
 			receiver = self
 			
-			layoutConstraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .Equal, toItem: self, attribute: attribute, multiplier: 0.0, constant: CGFloat(layoutParameter.constant))
+			layoutConstraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: self, attribute: attribute, multiplier: 0.0, constant: CGFloat(layoutParameter.constant))
 		}
 		
 		if layoutParameter.priority != JGLayoutPriorityRequired {
@@ -71,7 +71,7 @@ extension UIView {
 // MARK: Private Helper Methods
 private extension UIView {
 	
-	func nearestCommonView(views: Array<UIView>) -> UIView {
+	func nearestCommonView(_ views: Array<UIView>) -> UIView {
 		var closestView = Int.max
 		for view in views {
 			closestView = min(closestView, view.displacementFromTopOfHierarchy)
@@ -90,8 +90,8 @@ private extension UIView {
 		return slice[0]
 	}
 	
-	class func allObjectsInArrayAreEqual(array: Array<NSObject>) -> Bool {
-		var arrayGenerator = array.generate()
+	class func allObjectsInArrayAreEqual(_ array: Array<NSObject>) -> Bool {
+		var arrayGenerator = array.makeIterator()
 		let firstObject = arrayGenerator.next()
 		for object in arrayGenerator {
 			if object != firstObject { return false }
@@ -99,11 +99,11 @@ private extension UIView {
 		return true
 	}
 	
-	func viewWithDisplacementFromTopOfHierarchy(displacement: Int) -> UIView! {
+	func viewWithDisplacementFromTopOfHierarchy(_ displacement: Int) -> UIView! {
 		return superviewOfOrder(displacementFromTopOfHierarchy - displacement)
 	}
 	
-	func superviewOfOrder(order: Int) -> UIView! {
+	func superviewOfOrder(_ order: Int) -> UIView! {
 		var view: UIView! = self
 		for _ in 0..<order {
 			view = view.superview

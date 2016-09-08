@@ -10,10 +10,10 @@ Finally, JGLayoutDotSyntax supports using arbitrary properties as constraints. F
 Format
 =================
 
-Layout constraints can be specified simply and easily using reading dot syntax. The lenghty, hard-to-understand layout code
+Layout constraints can be specified simply and easily using reading dot syntax. The lengthy, hard-to-understand layout code
 
 ```swift
-view.addConstraint(NSLayoutConstraint(item: subview, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0))
+view.addConstraint(NSLayoutConstraint(item: subview, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
 ```
 
 can be rewritten in a short, simple, easily understood format using JGLayoutDotSyntax:
@@ -74,7 +74,7 @@ In order to better illustrate how JGLayoutDotSyntax is to be used, an example pr
 
 ```swift
 let size = JGLP(40.0)
-let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
 
 purpleView.layout.width = JGLP(size.constant * 2.0)
 purpleView.layout.height = JGLP(size.constant * 2.0)
@@ -90,7 +90,7 @@ redView.layout.width = size
 redView.layout.height = size
 redView.layout.centerX = view.layout.centerX[JGLayoutPriorityDefaultHigh]
 redView.layout.centerY = view.layout.centerY
-redView.layout.left = (blueView.layout.right + 10.0).withRelation(.GreaterThanOrEqual)
+redView.layout.left = (blueView.layout.right + 10.0).withRelation(.greaterThanOrEqual)
 
 let margin = 10.0
 

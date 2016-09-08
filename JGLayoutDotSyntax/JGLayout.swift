@@ -42,12 +42,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var top: JGLayoutParameter! {
+	var top: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Top)
+			return JGLayoutParameter(object: object, attribute: .top)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Top, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.top, parameter: newValue)
 		}
 	}
 	
@@ -63,12 +63,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var bottom: JGLayoutParameter! {
+	var bottom: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Bottom)
+			return JGLayoutParameter(object: object, attribute: .bottom)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Bottom, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.bottom, parameter: newValue)
 		}
 	}
 	
@@ -84,12 +84,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
 	
 	*/
-	var left: JGLayoutParameter! {
+	var left: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Left)
+			return JGLayoutParameter(object: object, attribute: .left)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Left, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.left, parameter: newValue)
 		}
 	}
 	
@@ -105,12 +105,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var right: JGLayoutParameter! {
+	var right: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Right)
+			return JGLayoutParameter(object: object, attribute: .right)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Right, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.right, parameter: newValue)
 		}
 	}
 	
@@ -126,12 +126,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var leading: JGLayoutParameter! {
+	var leading: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Leading)
+			return JGLayoutParameter(object: object, attribute: .leading)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Leading, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.leading, parameter: newValue)
 		}
 	}
 	
@@ -147,12 +147,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var trailing: JGLayoutParameter! {
+	var trailing: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Trailing)
+			return JGLayoutParameter(object: object, attribute: .trailing)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Trailing, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.trailing, parameter: newValue)
 		}
 	}
 	
@@ -161,19 +161,19 @@ class JGLayout: NSObject {
  @code
  
  viewA.layout.width = viewB.layout.width // sets viewA width to match that of viewB
- viewC.layout.width = 50.0              // sets viewC width to 50 points
+ viewC.layout.width = 50.0               // sets viewC width to 50 points
  
  @endcode
  
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var width: JGLayoutParameter! {
+	var width: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Width)
+			return JGLayoutParameter(object: object, attribute: .width)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Width, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.width, parameter: newValue)
 		}
 	}
 	
@@ -182,19 +182,19 @@ class JGLayout: NSObject {
  @code
  
  viewA.layout.height = viewB.layout.height // sets viewA height to match that of viewB
- viewC.layout.height = 50.0               // sets viewC height to 50 points
+ viewC.layout.height = 50.0                // sets viewC height to 50 points
  
  @endcode
  
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var height: JGLayoutParameter! {
+	var height: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Height)
+			return JGLayoutParameter(object: object, attribute: .height)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Height, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.height, parameter: newValue)
 		}
 	}
 	
@@ -209,12 +209,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var centerX: JGLayoutParameter! {
+	var centerX: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .CenterX)
+			return JGLayoutParameter(object: object, attribute: .centerX)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.CenterX, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.centerX, parameter: newValue)
 		}
 	}
 	
@@ -229,12 +229,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var centerY: JGLayoutParameter! {
+	var centerY: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .CenterY)
+			return JGLayoutParameter(object: object, attribute: .centerY)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.CenterY, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.centerY, parameter: newValue)
 		}
 	}
 	
@@ -249,12 +249,12 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var baseline: JGLayoutParameter! {
+	var baseline: JGLayoutParameter {
 		get {
-			return JGLayoutParameter(object: object, attribute: .Baseline)
+			return JGLayoutParameter(object: object, attribute: .lastBaseline)
 		}
 		set {
-			view.addLayoutConstraintWithAttribute(.Baseline, parameter: newValue)
+			view.addLayoutConstraintWithAttribute(.lastBaseline, parameter: newValue)
 		}
 	}
 	
@@ -270,25 +270,25 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var alignment: Array<JGLayoutParameter!> {
+	var alignment: Array<JGLayoutParameter> {
 		get {
-			return [top, bottom, left, right] as Array<JGLayoutParameter!>
+			return [top, bottom, left, right]
 		}
 		set {
 			assert(newValue.count == 4, "Invalid alignment: Alignment array does not contain 4 objects")
 			for parameter in newValue {
 				switch parameter.attribute {
-				case .Top:
+				case .top:
 					top = parameter
-				case .Bottom:
+				case .bottom:
 					bottom = parameter
-				case .Left:
+				case .left:
 					left = parameter
-				case .Right:
+				case .right:
 					right = parameter
-				case .Leading:
+				case .leading:
 					leading = parameter
-				case .Trailing:
+				case .trailing:
 					trailing = parameter
 				default:
 					break
@@ -309,17 +309,17 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var size: Array<JGLayoutParameter!> {
+	var size: Array<JGLayoutParameter> {
 		get {
-			return [width, height] as Array<JGLayoutParameter!>
+			return [width, height]
 		}
 		set {
 			assert(newValue.count == 2, "Invalid size: Size array does not contain 2 objects")
 			for parameter in newValue {
 				switch parameter.attribute {
-				case .Width:
+				case .width:
 					width = parameter
-				case .Height:
+				case .height:
 					height = parameter
 				default:
 					break
@@ -340,17 +340,17 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var center: Array<JGLayoutParameter!> {
+	var center: Array<JGLayoutParameter> {
 		get {
-			return [centerX, centerY] as Array<JGLayoutParameter!>
+			return [centerX, centerY]
 		}
 		set {
 			assert(newValue.count == 2, "Invalid position: Position array does not contain 2 objects")
 			for parameter in newValue {
 				switch parameter.attribute {
-				case .CenterX:
+				case .centerX:
 					centerX = parameter
-				case .CenterY:
+				case .centerY:
 					centerY = parameter
 				default:
 					break

@@ -18,28 +18,28 @@ class ViewController: UIViewController {
 		view.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
 		
 		let blueView = UIView()
-		blueView.backgroundColor = UIColor.blueColor()
+		blueView.backgroundColor = .blue
 		blueView.translatesAutoresizingMaskIntoConstraints = false
 		
 		let greenView = UIView()
-		greenView.backgroundColor = UIColor.greenColor()
+		greenView.backgroundColor = .green
 		greenView.translatesAutoresizingMaskIntoConstraints = false
 		
 		let yellowView = UIView()
-		yellowView.backgroundColor = UIColor.yellowColor()
+		yellowView.backgroundColor = .yellow
 		yellowView.translatesAutoresizingMaskIntoConstraints = false
 		
 		let redView = UIView()
-		redView.backgroundColor = UIColor.redColor()
+		redView.backgroundColor = .red
 		redView.translatesAutoresizingMaskIntoConstraints = false
 		
 		let purpleView = UIView()
-		purpleView.backgroundColor = UIColor.purpleColor()
+		purpleView.backgroundColor = .purple
 		purpleView.translatesAutoresizingMaskIntoConstraints = false
 		
 		let label = JGDynamicSizeLabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.textAlignment = .Center
+		label.textAlignment = .center
 		label.text = "Hello World!"
 		
 		view.addSubview(purpleView)
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
 		
 		// Set up layout constraints using dot syntax.
 		let size = JGLP(40.0)
-		let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+		let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
 		
 		purpleView.layout.width = JGLP(size.constant * 2.0)
 		purpleView.layout.height = JGLP(size.constant * 2.0)
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
 		redView.layout.height = size
 		redView.layout.centerX = view.layout.centerX[JGLayoutPriorityDefaultHigh]
 		redView.layout.centerY = view.layout.centerY
-		redView.layout.left = (blueView.layout.right + 10.0).withRelation(.GreaterThanOrEqual)
+		redView.layout.left = (blueView.layout.right + 10.0).withRelation(.greaterThanOrEqual)
 		
 		let margin = 10.0
 		

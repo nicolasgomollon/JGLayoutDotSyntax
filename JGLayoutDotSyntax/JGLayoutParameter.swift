@@ -43,7 +43,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 	
 	/** Returns an initialized JGLayoutParameter. */
 	convenience override init() {
-		self.init(object: nil, attribute: .NotAnAttribute, relation: .Equal, priority: JGLayoutPriorityRequired, constant: 0.0, multiplier: 1.0)
+		self.init(object: nil, attribute: .notAnAttribute, relation: .equal, priority: JGLayoutPriorityRequired, constant: 0.0, multiplier: 1.0)
 	}
 	
 	/** Returns an initialized JGLayoutParameter with the constant set. It is not necessary to use this, however, as the JGLayoutConstruction protocol for the NSNumber class allows NSNumbers to be used as constant JGLayoutParameters.
@@ -53,7 +53,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	convenience init(constant: Double) {
+	convenience init(_ constant: Double) {
 		self.init()
 		self.constant = constant
 	}
@@ -65,8 +65,8 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	convenience init(_ number: AnyObject) {
-		self.init(constant: number as! Double)
+	convenience init(number: NSNumber) {
+		self.init(number.doubleValue)
 	}
 	
 	/** Returns an initialized JGLayoutParameter with the object and attribute set. It is not necessary to use this, however, as the Layout category for the UIView class adds properties with getters that return JGLayoutParameters with the requested attributes.
@@ -88,7 +88,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 		return self
 	}
 	
-	func withRelation(relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
 		self.relation = relation
 		return self
 	}
@@ -97,7 +97,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 
 extension JGLayoutParameter: NSCopying {
 	
-	func copyWithZone(zone: NSZone) -> AnyObject {
+	func copy(with zone: NSZone?) -> Any {
 		return JGLayoutParameter(object: object, attribute: attribute, relation: relation, priority: priority, constant: constant, multiplier: multiplier)
 	}
 	
@@ -107,10 +107,10 @@ extension JGLayoutParameter: NSCopying {
 extension Double {
 	
 	var layoutParameter: JGLayoutParameter {
-		return JGLayoutParameter(constant: self)
+		return JGLayoutParameter(self)
 	}
 	
-	func withRelation(relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
 		return layoutParameter.withRelation(relation)
 	}
 	
@@ -119,10 +119,10 @@ extension Double {
 extension Float {
 	
 	var layoutParameter: JGLayoutParameter {
-		return JGLayoutParameter(constant: Double(self))
+		return JGLayoutParameter(Double(self))
 	}
 	
-	func withRelation(relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
 		return layoutParameter.withRelation(relation)
 	}
 	
@@ -131,10 +131,10 @@ extension Float {
 extension Int {
 	
 	var layoutParameter: JGLayoutParameter {
-		return JGLayoutParameter(constant: Double(self))
+		return JGLayoutParameter(Double(self))
 	}
 	
-	func withRelation(relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
 		return layoutParameter.withRelation(relation)
 	}
 	
@@ -143,10 +143,10 @@ extension Int {
 extension NSNumber {
 	
 	var layoutParameter: JGLayoutParameter {
-		return JGLayoutParameter(constant: self.doubleValue)
+		return JGLayoutParameter(self.doubleValue)
 	}
 	
-	func withRelation(relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
 		return layoutParameter.withRelation(relation)
 	}
 	
@@ -169,7 +169,7 @@ func + (left: JGLayoutParameter, right: Int) -> JGLayoutParameter {
 }
 
 func + (left: JGLayoutParameter, right: Bool) -> JGLayoutParameter {
-	return left + Double(right)
+	return left + Double(right.hashValue)
 }
 
 func + (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
@@ -219,7 +219,7 @@ func - (left: JGLayoutParameter, right: Int) -> JGLayoutParameter {
 }
 
 func - (left: JGLayoutParameter, right: Bool) -> JGLayoutParameter {
-	return left + -Double(right)
+	return left + -Double(right.hashValue)
 }
 
 func - (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
@@ -245,7 +245,7 @@ func += (left: JGLayoutParameter, right: Int) {
 }
 
 func += (left: JGLayoutParameter, right: Bool) {
-	left += Double(right)
+	left += Double(right.hashValue)
 }
 
 func += (left: JGLayoutParameter, right: CGFloat) {
@@ -270,7 +270,7 @@ func -= (left: JGLayoutParameter, right: Int) {
 }
 
 func -= (left: JGLayoutParameter, right: Bool) {
-	left -= Double(right)
+	left -= Double(right.hashValue)
 }
 
 func -= (left: JGLayoutParameter, right: CGFloat) {
@@ -298,7 +298,7 @@ func * (left: JGLayoutParameter, right: Int) -> JGLayoutParameter {
 }
 
 func * (left: JGLayoutParameter, right: Bool) -> JGLayoutParameter {
-	return left * Double(right)
+	return left * Double(right.hashValue)
 }
 
 func * (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
@@ -349,7 +349,7 @@ func *= (left: JGLayoutParameter, right: Int) {
 }
 
 func *= (left: JGLayoutParameter, right: Bool) {
-	left *= Double(right)
+	left *= Double(right.hashValue)
 }
 
 func *= (left: JGLayoutParameter, right: CGFloat) {

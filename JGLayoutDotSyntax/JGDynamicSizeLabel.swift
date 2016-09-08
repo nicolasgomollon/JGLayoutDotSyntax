@@ -31,35 +31,31 @@ class JGDynamicSizeLabel: UILabel {
 			if newValue == nil {
 				parameter = nil
 			} else if let fontSizeMultiplier = newValue as? JGLayoutParameter {
-				if (fontSizeMultiplier.attribute == NSLayoutAttribute.Width) || (fontSizeMultiplier.attribute == NSLayoutAttribute.Height) {
+				if (fontSizeMultiplier.attribute == .width) || (fontSizeMultiplier.attribute == .height) {
 					parameter = fontSizeMultiplier
 				}
 			} else if let fontSizeMultiplier = newValue as? Double {
-				font = font.fontWithSize(font.pointSize * CGFloat(fontSizeMultiplier))
+				font = font.withSize(font.pointSize * CGFloat(fontSizeMultiplier))
 			}
 		}
 	}
 	
 	var parameter: JGLayoutParameter! {
 		willSet {
-			if let p = parameter {
-				if let view = p.object as? UIView {
-					view.layer.removeObserver(self, forKeyPath:"bounds")
-				}
-			}
+			guard let p = parameter,
+				let view = p.object as? UIView else { return }
+			view.layer.removeObserver(self, forKeyPath: "bounds")
 		}
 		didSet {
-			if let p = parameter {
-				if let view = p.object as? UIView {
-					view.layer.addObserver(self, forKeyPath: "bounds", options: .New, context: nil)
-				}
-			}
+			guard let p = parameter,
+				let view = p.object as? UIView else { return }
+			view.layer.addObserver(self, forKeyPath: "bounds", options: .new, context: nil)
 		}
 	}
 	
 	
 	convenience init() {
-		self.init(frame: CGRectZero)
+		self.init(frame: CGRect.zero)
 	}
 	
 	override init(frame: CGRect) {
@@ -70,22 +66,22 @@ class JGDynamicSizeLabel: UILabel {
 		super.init(coder: aDecoder)
 	}
 	
-	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-		if let p = parameter {
-			let view = p.object as? UIView
-			let viewObject = object as? CALayer
-			if (view != nil) && (viewObject == view!.layer) && (keyPath != nil) && (keyPath! == "bounds") {
-				var size: CGFloat = 0.0
-				switch p.attribute {
-				case .Width:
-					size = view!.bounds.size.width
-				case .Height:
-					size = view!.bounds.size.height
-				default:
-					break
-				}
-				font = font.fontWithSize(size * CGFloat(p.multiplier) + CGFloat(p.constant))
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		guard let keyPath = keyPath,
+			let p = parameter,
+			let view = p.object as? UIView,
+			let viewObject = object as? CALayer else { return }
+		if (viewObject == view.layer) && (keyPath == "bounds") {
+			var size: CGFloat = 0.0
+			switch p.attribute {
+			case .width:
+				size = view.bounds.size.width
+			case .height:
+				size = view.bounds.size.height
+			default:
+				break
 			}
+			font = font.withSize(size * CGFloat(p.multiplier) + CGFloat(p.constant))
 		}
 	}
 	
