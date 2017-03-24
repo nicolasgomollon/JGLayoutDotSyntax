@@ -15,7 +15,7 @@ typealias JGLayoutPriority = Int				// No idea why type casting a UILayoutPriori
 let JGLayoutPriorityRequired			= 1000	//JGLayoutPriority(UILayoutPriorityRequired)
 let JGLayoutPriorityDefaultHigh			= 750	//JGLayoutPriority(UILayoutPriorityDefaultHigh)
 let JGLayoutPriorityDefaultLow			= 250	//JGLayoutPriority(UILayoutPriorityDefaultLow)
-let JGLayoutPriorityFittingSizeLevel	= 50	//JGLayoutPriority(UILayoutPriorityFittingSizeLevel)
+let JGLayoutPriorityFittingSizeLevel	= 50		//JGLayoutPriority(UILayoutPriorityFittingSizeLevel)
 
 class JGLayoutParameter: NSObject, JGLayoutConstruction {
 	
