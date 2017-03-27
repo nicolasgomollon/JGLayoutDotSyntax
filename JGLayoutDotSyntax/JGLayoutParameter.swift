@@ -27,7 +27,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 	var multiplier: Double
 	
 	override var description: String {
-		return "<JGLayoutParameter; object = \(object); constant = \(constant); multiplier = \(multiplier)>"
+		return "<JGLayoutParameter; object = \(String(describing: object)); constant = \(constant); multiplier = \(multiplier)>"
 	}
 	
 	/** Returns an initialized JGLayoutParameter with all its parameters set. */
