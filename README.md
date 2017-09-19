@@ -13,7 +13,14 @@ Format
 Layout constraints can be specified simply and easily using reading dot syntax. The lengthy, hard-to-understand layout code
 
 ```swift
-view.addConstraint(NSLayoutConstraint(item: subview, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+view.addConstraint(NSLayoutConstraint(
+	item: subview,
+	attribute: .centerX,
+	relatedBy: .equal,
+	toItem: self,
+	attribute: .centerX,
+	multiplier: 1.0,
+	constant: 0.0))
 ```
 
 can be rewritten in a short, simple, easily understood format using JGLayoutDotSyntax:
@@ -43,10 +50,10 @@ subview.layout.width = JGLP(42.0)
 Additionally, JGLayoutDotSyntax allows priority to be specified. In favor of concision, a slightly irregular syntax is used. After a JGLayoutParameter, the subscript operator (`[]`) can be used to specifiy priority of a constraint, if needed. For example, we can lower the priority of centering our subview:
 
 ```swift
-subview.layout.centerX = view.layout.centerX[JGLayoutPriorityDefaultLow]
+subview.layout.centerX = view.layout.centerX[.defaultLow]
 ```
 
-The argument between the brackets should be a JGLayoutPriority (similar to a UILayoutPriority), which is represented by a positive integer, less than or equal to 1000 (as specified in Apple's NSLayoutConstraint documentation).
+The argument between the brackets should be of type UILayoutPriority, as specified in Apple's NSLayoutConstraint documentation.
 
 Further, there exists convenience methods `.layout.alignment` and `.layout.size` and `.layout.center` to quickly set the top, bottom, left, right constraints or the width and height of the sender to that of the receiver.
 
@@ -88,7 +95,7 @@ blueView.layout.width = JGLP(190.0)
 
 redView.layout.width = size
 redView.layout.height = size
-redView.layout.centerX = view.layout.centerX[JGLayoutPriorityDefaultHigh]
+redView.layout.centerX = view.layout.centerX[.defaultHigh]
 redView.layout.centerY = view.layout.centerY
 redView.layout.left = (blueView.layout.right + 10.0).withRelation(.greaterThanOrEqual)
 

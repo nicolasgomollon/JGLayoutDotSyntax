@@ -59,8 +59,8 @@ extension UIView {
 			layoutConstraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: layoutParameter.relation, toItem: self, attribute: attribute, multiplier: 0.0, constant: CGFloat(layoutParameter.constant))
 		}
 		
-		if layoutParameter.priority != JGLayoutPriorityRequired {
-			layoutConstraint.priority = UILayoutPriority(layoutParameter.priority)
+		if layoutParameter.priority != .required {
+			layoutConstraint.priority = layoutParameter.priority
 		}
 		
 		receiver.addConstraint(layoutConstraint)

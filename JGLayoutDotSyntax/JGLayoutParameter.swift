@@ -11,18 +11,12 @@ import UIKit
 
 typealias JGLP = JGLayoutParameter
 
-typealias JGLayoutPriority = Int				// No idea why type casting a UILayoutPriority (Float) throws a compile error
-let JGLayoutPriorityRequired			= 1000	//JGLayoutPriority(UILayoutPriorityRequired)
-let JGLayoutPriorityDefaultHigh			= 750	//JGLayoutPriority(UILayoutPriorityDefaultHigh)
-let JGLayoutPriorityDefaultLow			= 250	//JGLayoutPriority(UILayoutPriorityDefaultLow)
-let JGLayoutPriorityFittingSizeLevel	= 50		//JGLayoutPriority(UILayoutPriorityFittingSizeLevel)
-
 class JGLayoutParameter: NSObject, JGLayoutConstruction {
 	
 	var object: AnyObject?
 	var attribute: NSLayoutAttribute
 	var relation: NSLayoutRelation
-	var priority: JGLayoutPriority
+	var priority: UILayoutPriority
 	var constant: Double
 	var multiplier: Double
 	
@@ -31,7 +25,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 	}
 	
 	/** Returns an initialized JGLayoutParameter with all its parameters set. */
-	init(object: AnyObject?, attribute: NSLayoutAttribute, relation: NSLayoutRelation, priority: JGLayoutPriority, constant: Double, multiplier: Double) {
+	init(object: AnyObject?, attribute: NSLayoutAttribute, relation: NSLayoutRelation, priority: UILayoutPriority, constant: Double, multiplier: Double) {
 		self.object = object
 		self.attribute = attribute
 		self.relation = relation
@@ -43,7 +37,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 	
 	/** Returns an initialized JGLayoutParameter. */
 	convenience override init() {
-		self.init(object: nil, attribute: .notAnAttribute, relation: .equal, priority: JGLayoutPriorityRequired, constant: 0.0, multiplier: 1.0)
+		self.init(object: nil, attribute: .notAnAttribute, relation: .equal, priority: .required, constant: 0.0, multiplier: 1.0)
 	}
 	
 	/** Returns an initialized JGLayoutParameter with the constant set. It is not necessary to use this, however, as the JGLayoutConstruction protocol for the NSNumber class allows NSNumbers to be used as constant JGLayoutParameters.
@@ -83,7 +77,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 		self.attribute = attribute
 	}
 	
-	subscript(priority: JGLayoutPriority) -> JGLayoutParameter {
+	subscript(priority: UILayoutPriority) -> JGLayoutParameter {
 		self.priority = priority
 		return self
 	}
@@ -177,7 +171,7 @@ func + (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
 }
 
 func + (left: JGLayoutParameter, right: NSNumber) -> JGLayoutParameter {
-	return left + Double(right)
+	return left + right.doubleValue
 }
 
 
@@ -227,7 +221,7 @@ func - (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
 }
 
 func - (left: JGLayoutParameter, right: NSNumber) -> JGLayoutParameter {
-	return left + -Double(right)
+	return left + -right.doubleValue
 }
 
 
@@ -253,7 +247,7 @@ func += (left: JGLayoutParameter, right: CGFloat) {
 }
 
 func += (left: JGLayoutParameter, right: NSNumber) {
-	left += Double(right)
+	left += right.doubleValue
 }
 
 
@@ -278,7 +272,7 @@ func -= (left: JGLayoutParameter, right: CGFloat) {
 }
 
 func -= (left: JGLayoutParameter, right: NSNumber) {
-	left -= Double(right)
+	left -= right.doubleValue
 }
 
 
@@ -306,7 +300,7 @@ func * (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
 }
 
 func * (left: JGLayoutParameter, right: NSNumber) -> JGLayoutParameter {
-	return left * Double(right)
+	return left * right.doubleValue
 }
 
 
@@ -357,5 +351,5 @@ func *= (left: JGLayoutParameter, right: CGFloat) {
 }
 
 func *= (left: JGLayoutParameter, right: NSNumber) {
-	left *= Double(right)
+	left *= right.doubleValue
 }
