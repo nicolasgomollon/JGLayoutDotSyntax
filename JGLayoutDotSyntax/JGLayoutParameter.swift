@@ -163,7 +163,7 @@ func + (left: JGLayoutParameter, right: Int) -> JGLayoutParameter {
 }
 
 func + (left: JGLayoutParameter, right: Bool) -> JGLayoutParameter {
-	return left + Double(right.hashValue)
+	return left + Double(right ? 1 : 0)
 }
 
 func + (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
@@ -213,7 +213,7 @@ func - (left: JGLayoutParameter, right: Int) -> JGLayoutParameter {
 }
 
 func - (left: JGLayoutParameter, right: Bool) -> JGLayoutParameter {
-	return left + -Double(right.hashValue)
+	return left + -Double(right ? 1 : 0)
 }
 
 func - (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
@@ -239,7 +239,7 @@ func += (left: JGLayoutParameter, right: Int) {
 }
 
 func += (left: JGLayoutParameter, right: Bool) {
-	left += Double(right.hashValue)
+	left += Double(right ? 1 : 0)
 }
 
 func += (left: JGLayoutParameter, right: CGFloat) {
@@ -264,7 +264,7 @@ func -= (left: JGLayoutParameter, right: Int) {
 }
 
 func -= (left: JGLayoutParameter, right: Bool) {
-	left -= Double(right.hashValue)
+	left -= Double(right ? 1 : 0)
 }
 
 func -= (left: JGLayoutParameter, right: CGFloat) {
@@ -292,7 +292,7 @@ func * (left: JGLayoutParameter, right: Int) -> JGLayoutParameter {
 }
 
 func * (left: JGLayoutParameter, right: Bool) -> JGLayoutParameter {
-	return left * Double(right.hashValue)
+	return left * Double(right ? 1 : 0)
 }
 
 func * (left: JGLayoutParameter, right: CGFloat) -> JGLayoutParameter {
@@ -343,7 +343,7 @@ func *= (left: JGLayoutParameter, right: Int) {
 }
 
 func *= (left: JGLayoutParameter, right: Bool) {
-	left *= Double(right.hashValue)
+	left *= Double(right ? 1 : 0)
 }
 
 func *= (left: JGLayoutParameter, right: CGFloat) {

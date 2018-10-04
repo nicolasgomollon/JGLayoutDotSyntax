@@ -21,7 +21,7 @@ class JGLayout: NSObject {
 	
 	
 	override var description: String {
-		return "<JGLayout; object = \(object)>"
+		return "<JGLayout; object = \(String(describing: object))>"
 	}
 	
 	init(object: AnyObject) {
