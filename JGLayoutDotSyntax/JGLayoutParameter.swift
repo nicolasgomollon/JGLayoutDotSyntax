@@ -14,8 +14,8 @@ typealias JGLP = JGLayoutParameter
 class JGLayoutParameter: NSObject, JGLayoutConstruction {
 	
 	var object: AnyObject?
-	var attribute: NSLayoutAttribute
-	var relation: NSLayoutRelation
+	var attribute: NSLayoutConstraint.Attribute
+	var relation: NSLayoutConstraint.Relation
 	var priority: UILayoutPriority
 	var constant: Double
 	var multiplier: Double
@@ -25,7 +25,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 	}
 	
 	/** Returns an initialized JGLayoutParameter with all its parameters set. */
-	init(object: AnyObject?, attribute: NSLayoutAttribute, relation: NSLayoutRelation, priority: UILayoutPriority, constant: Double, multiplier: Double) {
+	init(object: AnyObject?, attribute: NSLayoutConstraint.Attribute, relation: NSLayoutConstraint.Relation, priority: UILayoutPriority, constant: Double, multiplier: Double) {
 		self.object = object
 		self.attribute = attribute
 		self.relation = relation
@@ -71,7 +71,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	convenience init(object: AnyObject, attribute: NSLayoutAttribute) {
+	convenience init(object: AnyObject, attribute: NSLayoutConstraint.Attribute) {
 		self.init()
 		self.object = object
 		self.attribute = attribute
@@ -82,7 +82,7 @@ class JGLayoutParameter: NSObject, JGLayoutConstruction {
 		return self
 	}
 	
-	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutConstraint.Relation) -> JGLayoutParameter {
 		self.relation = relation
 		return self
 	}
@@ -104,7 +104,7 @@ extension Double {
 		return JGLayoutParameter(self)
 	}
 	
-	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutConstraint.Relation) -> JGLayoutParameter {
 		return layoutParameter.withRelation(relation)
 	}
 	
@@ -116,7 +116,7 @@ extension Float {
 		return JGLayoutParameter(Double(self))
 	}
 	
-	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutConstraint.Relation) -> JGLayoutParameter {
 		return layoutParameter.withRelation(relation)
 	}
 	
@@ -128,7 +128,7 @@ extension Int {
 		return JGLayoutParameter(Double(self))
 	}
 	
-	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutConstraint.Relation) -> JGLayoutParameter {
 		return layoutParameter.withRelation(relation)
 	}
 	
@@ -140,7 +140,7 @@ extension NSNumber {
 		return JGLayoutParameter(self.doubleValue)
 	}
 	
-	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter {
+	func withRelation(_ relation: NSLayoutConstraint.Relation) -> JGLayoutParameter {
 		return layoutParameter.withRelation(relation)
 	}
 	

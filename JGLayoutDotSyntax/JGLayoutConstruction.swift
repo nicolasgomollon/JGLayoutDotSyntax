@@ -20,6 +20,6 @@ protocol JGLayoutConstruction: NSObjectProtocol {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	func withRelation(_ relation: NSLayoutRelation) -> JGLayoutParameter
+	func withRelation(_ relation: NSLayoutConstraint.Relation) -> JGLayoutParameter
 	
 }

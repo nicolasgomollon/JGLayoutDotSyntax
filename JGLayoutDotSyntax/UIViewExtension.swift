@@ -15,7 +15,7 @@ extension UIView {
 		return JGLayout(object: self)
 	}
 	
-	func removeLayoutConstraintsForAttribute(_ attribute: NSLayoutAttribute) {
+	func removeLayoutConstraintsForAttribute(_ attribute: NSLayoutConstraint.Attribute) {
 		var view: UIView? = self
 		
 		// Remove all constraints relating to self and attribute from all superviews of self
@@ -34,7 +34,7 @@ extension UIView {
 		} while view?.superview != nil
 	}
 	
-	func addLayoutConstraintWithAttribute(_ attribute: NSLayoutAttribute, parameter: AnyObject?) {
+	func addLayoutConstraintWithAttribute(_ attribute: NSLayoutConstraint.Attribute, parameter: AnyObject?) {
 		removeLayoutConstraintsForAttribute(attribute)
 		if parameter == nil { return }
 		
