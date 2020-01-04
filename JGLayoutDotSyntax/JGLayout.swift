@@ -13,10 +13,7 @@ class JGLayout: NSObject {
 	
 	var object: AnyObject!
 	var view: UIView! {
-		if let view = object as? UIView {
-			return view
-		}
-		return nil
+		return object as? UIView
 	}
 	
 	
@@ -270,7 +267,7 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var alignment: Array<JGLayoutParameter> {
+	var alignment: [JGLayoutParameter] {
 		get {
 			return [top, bottom, left, right]
 		}
@@ -309,7 +306,7 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var size: Array<JGLayoutParameter> {
+	var size: [JGLayoutParameter] {
 		get {
 			return [width, height]
 		}
@@ -340,7 +337,7 @@ class JGLayout: NSObject {
  @see https://github.com/JadenGeller/JGLayoutDotSyntax for more information.
  
 	*/
-	var center: Array<JGLayoutParameter> {
+	var center: [JGLayoutParameter] {
 		get {
 			return [centerX, centerY]
 		}

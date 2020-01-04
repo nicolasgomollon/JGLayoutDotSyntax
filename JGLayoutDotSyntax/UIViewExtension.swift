@@ -20,10 +20,10 @@ extension UIView {
 		
 		// Remove all constraints relating to self and attribute from all superviews of self
 		repeat {
-			if let view = view {
+			if let view: UIView = view {
 				for constraint in view.constraints {
-					let firstItem = constraint.firstItem as? UIView
-					let secondItem = constraint.secondItem as? UIView
+					let firstItem: UIView? = constraint.firstItem as? UIView
+					let secondItem: UIView? = constraint.secondItem as? UIView
 					if ((firstItem == self) && (constraint.firstAttribute == attribute)) ||
 						((secondItem == self) && (constraint.secondAttribute == attribute)) {
 							view.removeConstraint(constraint)
@@ -36,12 +36,12 @@ extension UIView {
 	
 	func addLayoutConstraintWithAttribute(_ attribute: NSLayoutConstraint.Attribute, parameter: AnyObject?) {
 		removeLayoutConstraintsForAttribute(attribute)
-		if parameter == nil { return }
+		guard parameter != nil else { return }
 		
 		var layoutParameter: JGLayoutParameter!
-		if let layoutParam = parameter as? JGLayoutParameter {
+		if let layoutParam: JGLayoutParameter = parameter as? JGLayoutParameter {
 			layoutParameter = layoutParam
-		} else if let constant = parameter as? Double {
+		} else if let constant: Double = parameter as? Double {
 			layoutParameter = JGLayoutParameter(constant)
 		}
 		assert(layoutParameter != nil, "Bad parameter input: Parameter input must be either a JGLayoutParameter, NSNumber, Double, Float, or Int.")
@@ -49,7 +49,7 @@ extension UIView {
 		var receiver: UIView!
 		var layoutConstraint: NSLayoutConstraint!
 		
-		if let object = layoutParameter.object as? UIView {
+		if let object: UIView = layoutParameter.object as? UIView {
 			receiver = nearestCommonView([self, object])
 			
 			layoutConstraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: layoutParameter.relation, toItem: object, attribute: layoutParameter.attribute, multiplier: CGFloat(layoutParameter.multiplier), constant: CGFloat(layoutParameter.constant))
@@ -71,13 +71,13 @@ extension UIView {
 // MARK: Private Helper Methods
 private extension UIView {
 	
-	func nearestCommonView(_ views: Array<UIView>) -> UIView {
-		var closestView = Int.max
+	func nearestCommonView(_ views: [UIView]) -> UIView {
+		var closestView: Int = .max
 		for view in views {
 			closestView = min(closestView, view.displacementFromTopOfHierarchy)
 		}
 		
-		var slice = Array<UIView>()
+		var slice: [UIView] = []
 		for view in views {
 			slice += [view.viewWithDisplacementFromTopOfHierarchy(closestView)]
 		}
@@ -90,9 +90,9 @@ private extension UIView {
 		return slice[0]
 	}
 	
-	class func allObjectsInArrayAreEqual(_ array: Array<NSObject>) -> Bool {
-		var arrayGenerator = array.makeIterator()
-		let firstObject = arrayGenerator.next()
+	class func allObjectsInArrayAreEqual(_ array: [NSObject]) -> Bool {
+		var arrayGenerator: IndexingIterator<[NSObject]> = array.makeIterator()
+		let firstObject: NSObject? = arrayGenerator.next()
 		for object in arrayGenerator {
 			if object != firstObject { return false }
 		}
@@ -112,8 +112,8 @@ private extension UIView {
 	}
 	
 	var displacementFromTopOfHierarchy: Int {
-		var count = 0
-		var i = superview
+		var count: Int = 0
+		var i: UIView? = superview
 		while i != nil {
 			count += 1
 			i = i?.superview
